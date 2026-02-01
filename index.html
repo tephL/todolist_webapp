@@ -1,13 +1,76 @@
 <!DOCTYPE html>
-
 <html>
 <head>
-  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
-  <title>Hello, World!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Bunny Quests</title>
 </head>
 <body>
-  <div class="tasks">
-    
-  </div>
+    <header>
+        <div class="left-header">
+            <img src="assets/title.png" id="title-img">
+        </div>
+        <div class="right-header">
+            <img src="assets/hamburger.png" id="menu-img">
+        </div>
+    </header>
+
+    <main>
+        <div class="welcome-box">
+            <div class="img-box">
+                <img src="assets/logo.png" id="logo">
+            </div>
+            
+            <div class="text-box">
+                <p id="welcome-text">Hewwooo, I am Bnoy and welcome to my quests!</p> 
+            </div>
+        </div>
+
+        <div class="add-task">
+            <div class="add-title">
+                <img src="assets/addicon.jpeg" id="addtask-logo">
+            </div>
+                
+            <div class="addtask-text">
+                <textarea placeholder="Add new Quest..." id="addtask-input"></textarea>
+                <button id="addtask-submit">Submit</buton>
+            </div>
+        </div>
+
+
+        <div class="main-tasks">
+            <div class="tasks-title">
+                <img src="assets/taskicon.jpeg" id="tasks-logo">
+            </div>
+                
+            <div class="tasks-list">
+                <div class="task">
+                    task 1
+                </div>
+
+                <div class="task">
+                    task 1
+                </div>
+
+                <div class="task">
+                    task 1
+                </div>
+                <div class="task">
+                    task 1
+                </div>
+                <div class="task">
+                    task 1
+                </div>
+                <div class="task">
+                    task 1
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+    <script type="module" src="./app.js"></script>
 </body>
 </html>
+

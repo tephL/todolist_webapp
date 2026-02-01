@@ -32,7 +32,7 @@ export function addTask(task_content){
     let new_task = new Task(task_content);
     tasks_arr.push(new_task);
   } else{
-    console.log('*** ERR: must not be empty');
+    console.warn('*** ERR: must not be empty');
   }
 }
 
@@ -80,7 +80,7 @@ export function deleteTask(task_id){
 
 
 // for CLI debugging
-
+/*
 console.log('start');
 
 addTask('say hi'); // 1
@@ -93,3 +93,4 @@ showTasks();
 deleteTask(3);
 editTask(1, 'tephL is goated');
 showTasks();
+*/
