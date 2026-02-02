@@ -15,6 +15,8 @@ function addTask(value){
     tasks_list.prepend(_new);
 }
 
+
+// hello
 // shadings when submit is being clicked
 // getting value of textbox if clicked
 addtask_submit.addEventListener("mouseover", event => {
