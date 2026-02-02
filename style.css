@@ -176,7 +176,31 @@ main{
 .task{
     border-radius: 20px;
     min-height: 120px;
-    background-color: rgba(254, 189, 213, 0.8);
+    background-color: rgba(255, 178, 206, 0.8);
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     padding: 10px;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.task_done{
+    background-color: rgba(255, 178, 206, 0.411);
+    color: black;
+}
+
+.done{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.task_content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete{
+    display: flex;
+    align-items: center;
 }

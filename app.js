@@ -4,16 +4,45 @@ const addtask_submit = document.getElementById("addtask_submit");
 const addtask_input = document.getElementById("addtask_input");
 const tasks_list = document.querySelector(".tasks_list");
 
+const task = document.querySelectorAll(".task");
+const checktask_button = document.querySelectorAll(".checktask_button");
+const deletetask_button = document.querySelectorAll(".deletetask_button");
+
 function addTask(value){
     let _new = document.createElement('div');
     _new.classList.add("task");
+    //check
+    let _done = document.createElement("div");
+    _done.classList.add("done");
+    let _doneImg = document.createElement("img");
+    _doneImg.src = "assets/check.png";
+    _doneImg.classList.add("checktask_button");
+    //content
     let _newP = document.createElement('p');
     console.log(`MSG: Added ${value}`);
+    //delete
 
     _newP.textContent = value;
+    _new.appendChild(_done);
     _new.appendChild(_newP);
     tasks_list.prepend(_new);
 }
+
+tasks_list.addEventListener("click", event => {
+    if(event.target.classList.contains("checktask_button")){
+        console.log(event.target.classList);
+        let _wholeBox = event.target.parentElement.parentElement;
+        _wholeBox.classList.toggle("task_done");
+    }
+    
+})
+
+/*
+checktask_button.forEach(element => {
+    element.addEventListener("click", event =>{
+        
+    });
+});*/
 
 
 // hello
