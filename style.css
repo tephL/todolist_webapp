@@ -28,23 +28,23 @@ header{
     padding: 0px 20px 0px 20px;
 }
 
-.left-header{
+.left_header{
     width: 40%;   
     padding-top: 8px;
 }   
 
-#title-img{
+#title_img{
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.right-header{
+.right_header{
     width: 30px;   
     padding-top: 8px;
 }   
 
-#menu-img{
+#menu_img{
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -57,14 +57,14 @@ main{
     margin-bottom: 30px;
 }
 
-.welcome-box{
+.welcome_box{
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
 }
 
-.img-box{
+.img_box{
     width: 30%;
     height: 100%;
 }
@@ -77,7 +77,7 @@ main{
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.text-box{
+.text_box{
     background-color: rgba(254, 189, 213, 0.9);
     padding: 20px;
     max-width: 40%;
@@ -85,24 +85,24 @@ main{
     border-radius: 25px;
 }
 
-#welcome-text{
+#welcome_text{
     font-size: small;
     text-align: justify;
 }
 
 
-.add-task{
+.add_task{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.add-title{
+.add_title{
     width: 30%;
     height: 100%;
 }
 
-#addtask-logo{
+#addtask_logo{
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -110,7 +110,7 @@ main{
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.addtask-text{
+.addtask_text{
     width: 90%;
     padding: 15px;
     border-radius: 25px;
@@ -118,7 +118,7 @@ main{
     gap: 10px;
 }
 
-#addtask-input{
+#addtask_input{
     border: 2px solid rgba(254, 189, 213, 0.9); 
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     border-radius: 25px;
@@ -132,11 +132,11 @@ main{
     padding: 10px;
 }
 
-#addtask-input:focus{
+#addtask_input:focus{
     outline: none;
     border: 2px solid rgba(254, 189, 213, 0.9); 
 }
-#addtask-submit{
+#addtask_submit{
     width: 100%;
     border-radius: 25px;
     background-color: rgba(254, 189, 213, 0.9); 
@@ -145,18 +145,18 @@ main{
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.main-tasks{
+.main_tasks{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.tasks-title{
+.tasks_title{
     width: 30%;
     height: 100%;
 }
 
-#tasks-logo{
+#tasks_logo{
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -164,7 +164,7 @@ main{
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.tasks-list{
+.tasks_list{
     display: grid;
     grid-template-rows: 1fr;
     width: 90%;
