@@ -17,14 +17,25 @@ function addTask(value){
     let _doneImg = document.createElement("img");
     _doneImg.src = "assets/check.png";
     _doneImg.classList.add("checktask_button");
+    _done.appendChild(_doneImg);
     //content
     let _newP = document.createElement('p');
     console.log(`MSG: Added ${value}`);
+    _newP.classList.add("task_content");
     //delete
 
+    let _delete = document.createElement('div');
+    _delete.classList.add("delete");
+    let _deleteImg = document.createElement("img");
+    _deleteImg.src = "assets/x.png";
+    _deleteImg.classList.add("deletetask_button");
+    _delete.appendChild(_deleteImg);
+
+    //content 2 + adding
     _newP.textContent = value;
     _new.appendChild(_done);
     _new.appendChild(_newP);
+    _new.appendChild(_delete);
     tasks_list.prepend(_new);
 }
 
@@ -34,8 +45,15 @@ tasks_list.addEventListener("click", event => {
         let _wholeBox = event.target.parentElement.parentElement;
         _wholeBox.classList.toggle("task_done");
     }
+
+    if(event.target.classList.contains("deletetask_button")){
+        let _wholeBox = event.target.parentElement.parentElement;
+        _wholeBox.remove();
+        console.log(`removed ${event.target.classList}`);
+    }
     
 })
+
 
 /*
 checktask_button.forEach(element => {
