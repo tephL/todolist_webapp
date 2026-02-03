@@ -14,11 +14,22 @@
  */
 
 class Task{
-  static ctr = 1;
+  static ctr = 0;
 
   constructor(task){
     this.id = Task.ctr;
     this.task = task;
+    this.status = false;
+
+    let _present = new Date();
+    let _month = _present.getMonth() + 1;
+    let _date = _present.getDate();
+    let _year = _present.getFullYear();
+    this.date = `${_month}/${_date}/${_year}`;
+
+    let _hour = _present.getHours();
+    let _mins = _present.getMinutes();
+    this.time = `${_hour}:${_mins}`;
     Task.ctr += 1;
   }
 }
@@ -40,32 +51,27 @@ export function sysGetTasks(){
 }
 
 
-export function editTask(task_id, new_task_content){
-  let matched_index = 0;
-
+export function sysToggleStatus(task_id){
   tasks_arr.forEach(element => {
     if(element.id == task_id){
-      console.warn(`*** MSG: found ${task_id} for edit`);
-      tasks_arr[matched_index].task = new_task_content;
+      element.status = (element.status) ? false : true;
+      console.warn(`SYS: toggled post_id${element.id} with text "${element.task}" and made it ${element.status}`);
       return;
     }
-    
-    matched_index += 1;
   });
 }
 
 
-export function deleteTask(task_id){
+export function sysDeleteTask(task_id){
   let matched_index = 0;
 
   tasks_arr.forEach(element => {
     if(element.id == task_id){
-      console.warn(`*** MSG: found ${task_id} for deletion`);
+      console.warn(`SYS: found post_id${task_id} for deletion`);
       // pop the index it's in
       tasks_arr.splice(matched_index, 1); 
       return;
     }
-    console.log(`*** MSG: iterate ${matched_index + 1}`);
     
     matched_index += 1;
   });

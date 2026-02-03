@@ -1,69 +1,91 @@
-import { sysGetTasks, sysAddTask, editTask, deleteTask } from './index.js';
+import { sysGetTasks, sysAddTask, sysDeleteTask, sysToggleStatus } from './index.js';
 
 const addtask_submit = document.getElementById("addtask_submit");
 const addtask_input = document.getElementById("addtask_input");
 const tasks_list = document.querySelector(".tasks_list");
 
 
-function reloadTasks(){
-    let sysTasks = sysGetTasks();
-    tasks_list.innerHTML = '';
-    
-    sysTasks.forEach(element => {
-        console.log(element);
-        addTask(element.task);
-    });
-    
-}
+// displayTasks();
+
 
 function addTask(value){
-    let _new = document.createElement('div');
-    _new.classList.add("task");
-    //check
-    let _done = document.createElement("div");
-    _done.classList.add("done");
-    let _doneImg = document.createElement("img");
-    _doneImg.src = "assets/check.png";
-    _doneImg.classList.add("checktask_button");
-    _done.appendChild(_doneImg);
-    //content
-    let _newP = document.createElement('p');
-    console.log(`MSG: Added ${value}`);
-    _newP.classList.add("task_content");
-    //delete
-
-    let _delete = document.createElement('div');
-    _delete.classList.add("delete");
-    let _deleteImg = document.createElement("img");
-    _deleteImg.src = "assets/x.png";
-    _deleteImg.classList.add("deletetask_button");
-    _delete.appendChild(_deleteImg);
-
-    //content 2 + adding
-    _newP.textContent = value;
-    _new.appendChild(_done);
-    _new.appendChild(_newP);
-    _new.appendChild(_delete);
-    tasks_list.prepend(_new);
-
-    // add task to array
     sysAddTask(value);
+    console.log(`MSG: Added ${value}`);
+    displayTasks();
 }
+
+
+function displayTasks(){
+    tasks_list.innerHTML = ''; // remove everything inside task_list
+
+    // iterate through the array of elements
+    // convert array's elements into a DOM element then push it to task_list
+    sysGetTasks().forEach(element => {
+        // task container
+        let _new = document.createElement('div');
+        if(element.status){
+            _new.classList.add("task");
+            _new.classList.add("task_done");
+        } else{
+            _new.classList.add("task");
+        }
+        _new.id = element.id;
+
+        //check button
+        let _upper = document.createElement("div");
+        _upper.classList.add("upper");
+        let _taskDetails = document.createElement("div");
+        _taskDetails.classList.add("task_details");
+        let _dateP = document.createElement("p");
+        _dateP.textContent = element.date;
+        _taskDetails.appendChild(_dateP);
+        let _hourP = document.createElement("p");
+        _hourP.textContent = element.time;
+        _taskDetails.appendChild(_hourP);
+
+        let _doneImg = document.createElement("img");
+        _doneImg.src = "assets/check.png";
+        _doneImg.classList.add("checktask_button");
+        _upper.appendChild(_taskDetails);
+        _upper.appendChild(_doneImg);
+
+        //content box
+        let _newP = document.createElement('p');
+        _newP.textContent = element.task;
+        _newP.classList.add("task_content");
+
+        //delete button
+        let _delete = document.createElement('div');
+        _delete.classList.add("delete");
+        let _deleteImg = document.createElement("img");
+        _deleteImg.src = "assets/x.png";
+        _deleteImg.classList.add("deletetask_button");
+        _delete.appendChild(_deleteImg);
+
+        //appending all to container
+        _new.appendChild(_upper);
+        _new.appendChild(_newP);
+        _new.appendChild(_delete);
+        tasks_list.prepend(_new);
+    });
+}
+
 
 tasks_list.addEventListener("click", event => {
     if(event.target.classList.contains("checktask_button")){
-        console.log(event.target.classList);
+        let _taskContainer = event.target.parentElement.parentElement;
         let _wholeBox = event.target.parentElement.parentElement;
-        _wholeBox.classList.toggle("task_done");
+        _taskContainer.classList.toggle("task_done");
+        sysToggleStatus(_taskContainer.id);
     }
 
+
     if(event.target.classList.contains("deletetask_button")){
-        let _wholeBox = event.target.parentElement.parentElement;
-        _wholeBox.remove();
-        console.log(`removed ${event.target.classList}`);
+        let _taskContainer = event.target.parentElement.parentElement;
+        sysDeleteTask(_taskContainer.id);
+        displayTasks();
     }
-    
-})
+});
 
 
 /*
@@ -89,7 +111,7 @@ addtask_submit.addEventListener("click", event => {
         addtask_input.value = '';
     }else{
         console.warn("MSG: must have input!");
-        reloadTasks();
+        displayTasks();
     }
     
     setTimeout(() => {
