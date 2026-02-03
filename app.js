@@ -1,12 +1,20 @@
-import { showTasks, editTask, deleteTask } from './index.js';
+import { sysGetTasks, sysAddTask, editTask, deleteTask } from './index.js';
 
 const addtask_submit = document.getElementById("addtask_submit");
 const addtask_input = document.getElementById("addtask_input");
 const tasks_list = document.querySelector(".tasks_list");
 
-const task = document.querySelectorAll(".task");
-const checktask_button = document.querySelectorAll(".checktask_button");
-const deletetask_button = document.querySelectorAll(".deletetask_button");
+
+function reloadTasks(){
+    let sysTasks = sysGetTasks();
+    tasks_list.innerHTML = '';
+    
+    sysTasks.forEach(element => {
+        console.log(element);
+        addTask(element.task);
+    });
+    
+}
 
 function addTask(value){
     let _new = document.createElement('div');
@@ -37,6 +45,9 @@ function addTask(value){
     _new.appendChild(_newP);
     _new.appendChild(_delete);
     tasks_list.prepend(_new);
+
+    // add task to array
+    sysAddTask(value);
 }
 
 tasks_list.addEventListener("click", event => {
@@ -78,6 +89,7 @@ addtask_submit.addEventListener("click", event => {
         addtask_input.value = '';
     }else{
         console.warn("MSG: must have input!");
+        reloadTasks();
     }
     
     setTimeout(() => {

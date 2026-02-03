@@ -27,22 +27,16 @@ class Task{
 let tasks_arr = [];
 
 
-export function addTask(task_content){
+export function sysAddTask(task_content){
   if(task_content != ''){
     let new_task = new Task(task_content);
     tasks_arr.push(new_task);
-  } else{
-    console.warn('*** ERR: must not be empty');
   }
 }
 
 
-export function showTasks(){
-  tasks_arr.forEach(element => {
-    console.log('-');
-    console.log(`task content: ${element.task}`);
-    console.log(`task id: ${element.id}`);
-  });
+export function sysGetTasks(){
+  return tasks_arr;
 }
 
 

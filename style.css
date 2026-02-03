@@ -175,12 +175,12 @@ main{
 
 .task{
     border-radius: 20px;
-    min-height: 120px;
     background-color: rgba(255, 178, 206, 0.8);
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     padding: 10px;
-    display: grid;
-    grid-template-rows: repeat(3, 1fr);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .task_done{
@@ -198,6 +198,8 @@ main{
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 10px;
+    text-align: center;
 }
 
 .delete{
