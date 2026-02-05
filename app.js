@@ -3,10 +3,15 @@ import { sysGetTasks, sysAddTask, sysDeleteTask, sysToggleStatus } from './index
 const addtask_submit = document.getElementById("addtask_submit");
 const addtask_input = document.getElementById("addtask_input");
 const tasks_list = document.querySelector(".tasks_list");
+const menu_btn = document.getElementById("menu_btn");
+const menu_content = document.getElementById("menu_content");
 
 
 // displayTasks();
-
+menu_btn.addEventListener("click", e => {
+    menu_content.classList.toggle("menu_hide");
+    console.log(e);
+})
 
 function addTask(value){
     sysAddTask(value);
