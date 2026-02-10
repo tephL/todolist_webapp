@@ -128,3 +128,22 @@ addtask_submit.addEventListener("click", event => {
 addtask_submit.addEventListener("mouseout", event => {
     event.target.style.background = 'rgba(254, 189, 213, 0.9)';
 });
+
+// for the special task
+const special_click = document.getElementById("special_click");
+const special_task = document.querySelector(".special_task");
+
+// letter container
+const letter_container = document.getElementById("letter_container");
+const letter_exit = document.getElementById("letter_exit");
+
+special_click.addEventListener("click", e => {
+    letter_container.classList.toggle("letter_container");
+    special_task.classList.toggle("hide");
+    console.log("clicked");
+});
+
+letter_exit.addEventListener("click", e => {
+    letter_container.classList.toggle("letter_container");
+    special_task.classList.toggle("hide");
+});
